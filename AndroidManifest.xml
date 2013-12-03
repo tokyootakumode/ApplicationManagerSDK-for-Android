@@ -1,8 +1,4 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.primitive.applicationmanager"
-    android:versionCode="1"
-    android:versionName="0.0.1" >
-    <uses-sdk
-        android:minSdkVersion="8"
-        android:targetSdkVersion="17" />
+    package="com.primitive.applicationmanager">
+    <application />
 </manifest>

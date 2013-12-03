@@ -1,0 +1,62 @@
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:0.6.3'
+    }
+}
+
+apply plugin: 'android-library'
+
+repositories {
+    maven { url 'http://tokyootakumode.github.io/otakucamera-android/repository' }
+}
+
+dependencies {
+    compile 'com.primitive.library:common:1.0'
+    compile 'com.primitive.library:helper:1.0'
+}
+
+version = '0.0.2'
+
+android {
+    compileSdkVersion 18
+    buildToolsVersion "19.0.0"
+
+    defaultConfig {
+        versionCode 1
+        versionName version
+
+        minSdkVersion 8
+        targetSdkVersion 18
+
+        packageName 'com.primitive.applicationmanager'
+    }
+
+    sourceSets {
+        main {
+            manifest.srcFile 'AndroidManifest.xml'
+            java.srcDirs = ['src']
+        }
+    }
+}
+
+apply plugin: 'maven'
+
+def deployTo = new File(rootDir, 'repository')
+
+uploadArchives {
+    repositories {
+        mavenDeployer {
+            repository url: "file://${deployTo}"
+            pom.version = version
+            pom.groupId = 'com.primitive'
+            pom.artifactId = 'applicationmanager'
+        }
+    }
+}
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '1.8'
+}

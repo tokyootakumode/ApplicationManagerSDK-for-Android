@@ -68,3 +68,11 @@ Desktop.ini
 *.jbf
 
 assets/frame/*
+
+# gradle
+/.gradle/
+/gradle.properties
+/build/
+
+# created aar
+/repository/
