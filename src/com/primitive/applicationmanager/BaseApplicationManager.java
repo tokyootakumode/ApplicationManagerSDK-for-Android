@@ -34,6 +34,8 @@ import com.primitive.library.common.log.Logger;
 public class BaseApplicationManager implements Serializable {
 	private static final long serialVersionUID = 2138865866833793765L;
 
+    private boolean mDebug = false;
+
 	/**
 	 * Map<String, String>をJSONObjectに変換し返却します。
 	 * @param params
@@ -93,9 +95,11 @@ public class BaseApplicationManager implements Serializable {
 		}
 		Logger.debug("argParams:" + argParams.toString());
 		argParams.put("device", "android");
-		if (BuildConfig.DEBUG) {
+
+        if (mDebug) {
 			argParams.put("mode", "debug");
 		}
+
 		argParams.put("protocolVersion", config.protocolVersion.version);
 
 		final HttpClient httpClient = this.createHttpClient();
@@ -121,4 +125,20 @@ public class BaseApplicationManager implements Serializable {
 		}
 
 	}
+
+    /**
+     * Set the debug setting.
+     */
+    public void setDebug(boolean debug) {
+        mDebug = debug;
+    }
+
+    /**
+     * Get the debug setting.
+     *
+     * @ return boolean
+     */
+    public boolean isDebug() {
+        return mDebug;
+    }
 }

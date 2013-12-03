@@ -139,7 +139,7 @@ public class ApplicationManager extends BaseApplicationManager {
 	public boolean isUpgrade(final ApplicationSummary afterSummary) {
 		Logger.start();
 		final ApplicationSummary beforeSummary = this.beforeSummary;
-		if (BuildConfig.DEBUG) {
+        if (isDebug()) {
 			return true;
 		} else if (beforeSummary == null || afterSummary == null) {
 			return true;
